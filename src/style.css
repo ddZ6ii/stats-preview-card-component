@@ -1,11 +1,89 @@
 /* ########################################
 ############# CUSTOM FONTS ################
 ######################################## */
+/* Provide variable fonts as main format. */
+@font-face {
+  font-family: 'Inter VF';
+  src:
+    local('Inter'),
+    url('/assets/fonts/inter/Inter-VariableFont_slnt_wght.woff2')
+      format('woff2-variations'),
+    url('/assets/fonts/inter/Inter-VariableFont_slnt_wght.woff')
+      format('woff-variations'),
+    url('/assets/fonts/inter/Inter-VariableFont_slnt_wght.ttf')
+      format('truetype-variations');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Lexend Deca VF';
+  src:
+    local('Lexend Deca'),
+    url('/assets/fonts/lexend-deca/LexendDeca-VariableFont_wght.woff2')
+      format('woff2-variations'),
+    url('/assets/fonts/lexend-deca/LexendDeca-VariableFont_wght.woff')
+      format('woff-variations'),
+    url('/assets/fonts/lexend-deca/LexendDeca-VariableFont_wght.ttf')
+      format('ttf-variations');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+/* Provide static fonts as a fallback. */
+@font-face {
+  font-family: 'Inter';
+  src:
+    local('Inter'),
+    url('/assets/fonts/inter/static/Inter-Regular.woff2') format('woff2'),
+    url('/assets/fonts/inter/static/Inter-Regular.woff') format('woff'),
+    url('/assets/fonts/inter/static/Inter-Regular.ttf') format('ttf');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src:
+    local('Inter'),
+    url('/assets/fonts/inter/static/Inter-Bold.woff2') format('woff2'),
+    url('/assets/fonts/inter/static/Inter-Bold.woff') format('woff'),
+    url('/assets/fonts/inter/static/Inter-Bold.ttf') format('ttf');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lexend Deca';
+  src:
+    local('Inter'),
+    url('/assets/fonts/intlexend-decar/static/LexendDeca-Regular.woff2')
+      format('woff2'),
+    url('/assets/fonts/lexend-deca/static/LexendDeca-Regular.woff')
+      format('woff'),
+    url('/assets/fonts/lexend-deca/static/LexendDeca-Regular.ttf') format('ttf');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 /* ########################################
 ############# STYLE GUIDE #################
 ######################################## */
+:root {
+  --color-accent: #aa5cdb;
+  --neutral-50: #ffffff;
+  --neutral-100: hsla(0, 0%, 100%, 0.75);
+  --neutral-200: hsla(0, 0%, 100%, 0.6);
+  --neutral-600: #1b1938;
+  --neutral-800: #090b1a;
 
+  --font-size-body: 0.9375rem;
+  --font-size-heading: 1.5rem;
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
 /* ########################################
 ############# RESET #######################
 ######################################## */
@@ -49,6 +127,14 @@ ul {
 /* ########################################
 ############# BASIC STYLING ###############
 ######################################## */
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-body);
+  font-weight: var(font-weight-regular);
+  @supports (font-variation-settings: normal) {
+    font-family: 'Inter VF', sans-serif;
+  }
+}
 
 /* ########################################
 ############# UTILITIES ###################
