@@ -173,13 +173,13 @@ h1 {
 
 .card {
   margin-inline: auto;
-  width: min(85%, 27em);
+  width: min(85%, 405px);
   display: grid;
   background-color: var(--color-neutral-600);
   border-radius: var(--border-radius);
   overflow: hidden;
-  @media (min-width: 68em) {
-    width: min(100%, 62em);
+  @media (min-width: 1088px) {
+    width: min(100%, 930px);
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -187,7 +187,7 @@ h1 {
 .card-content {
   margin-inline: auto;
   padding: var(--spacing);
-  width: min(100%, 28em);
+  width: min(100%, 420px);
   display: grid;
   align-items: center;
   gap: var(--spacing);
@@ -199,13 +199,13 @@ h1 {
   }
 
   & .card-hero {
-    @media (max-width: 68em) {
+    @media (max-width: 1087px) {
       text-align: center;
     }
   }
 
   & .card-stats {
-    @media (min-width: 68em) {
+    @media (min-width: 1088px) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -214,7 +214,7 @@ h1 {
     display: grid;
     gap: calc(0.1 * var(--spacing));
 
-    @media (max-width: 68em) {
+    @media (max-width: 1087px) {
       justify-items: center;
     }
 
@@ -236,7 +236,7 @@ h1 {
 .card-thumbnail {
   position: relative;
 
-  @media (max-width: 68em) {
+  @media (max-width: 1087px) {
     order: -1;
   }
 

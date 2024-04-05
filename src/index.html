@@ -48,12 +48,44 @@
           </div>
         </div>
         <div class="card-thumbnail">
-          <img
-            src="/assets/images/image-header-desktop.jpg"
-            alt="Employees working on a project"
-            width="540"
-            height="446"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              media="(min-width: 1088px)"
+              sizes="(min-width: 1088px) 465px, 100vw"
+              srcset="
+                /assets/images/image-header-desktop-233.webp 233w,
+                /assets/images/image-header-desktop-465.webp 465w,
+                /assets/images/image-header-desktop-930.webp 930w
+              "
+              width="465"
+              height="384"
+            />
+            <source
+              type="image/webp"
+              media="(max-width: 1087px)"
+              sizes="(min-width: 480px) 405px, 100vw"
+              srcset="
+                /assets/images/image-header-mobile-210.webp 210w,
+                /assets/images/image-header-mobile-420.webp 420w,
+                /assets/images/image-header-mobile-840.webp 840w
+              "
+              width="420"
+              height="308"
+            />
+            <img
+              sizes="(min-width: 480px) 405px, 100vw"
+              srcset="
+                /assets/images/image-header-mobile-210.jpg 210w,
+                /assets/images/image-header-mobile-420.jpg 420w,
+                /assets/images/image-header-mobile-840.jpg 840w
+              "
+              src="/assets/images/image-header-mobile-420.webp"
+              alt="Employees working on a project"
+              width="420"
+              height="308"
+            />
+          </picture>
         </div>
       </div>
     </main>
