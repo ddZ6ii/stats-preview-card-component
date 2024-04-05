@@ -72,17 +72,26 @@
 ######################################## */
 :root {
   --color-accent: #aa5cdb;
-  --neutral-50: #ffffff;
-  --neutral-100: hsla(0, 0%, 100%, 0.75);
-  --neutral-200: hsla(0, 0%, 100%, 0.6);
-  --neutral-600: #1b1938;
-  --neutral-800: #090b1a;
+  --color-complementary: #c7db5c;
+  --color-neutral-50: #ffffff;
+  --color-neutral-100: hsla(0, 0%, 100%, 0.75);
+  --color-neutral-200: hsla(0, 0%, 100%, 0.6);
+  --color-neutral-600: #1b1938;
+  --color-neutral-800: #090b1a;
 
+  --font-size-body-sm: 0.75rem;
   --font-size-body: 0.9375rem;
-  --font-size-heading: 1.5rem;
+  --font-size-body-lg: 1.25rem;
+  --font-size-heading: 1.85rem;
 
   --font-weight-regular: 400;
   --font-weight-bold: 700;
+
+  --border-radius: 12px;
+
+  --spacing: 2rem;
+
+  --transition-duration-timing: 150ms ease;
 }
 /* ########################################
 ############# RESET #######################
@@ -99,7 +108,7 @@
 }
 
 html {
-  line-height: 1.5;
+  line-height: 1.75;
   box-sizing: border-box;
 }
 
@@ -107,33 +116,29 @@ a {
   display: inline-block;
 }
 
-button {
-  appearance: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
 img {
   max-width: 100%;
   display: block;
-}
-
-ul {
-  list-style-position: inside;
-  list-style-type: none;
 }
 
 /* ########################################
 ############# BASIC STYLING ###############
 ######################################## */
 body {
+  color: var(--color-neutral-100);
   font-family: 'Inter', sans-serif;
-  font-size: var(--font-body);
+  font-size: var(--font-size-body);
   font-weight: var(font-weight-regular);
   @supports (font-variation-settings: normal) {
     font-family: 'Inter VF', sans-serif;
   }
+}
+
+h1 {
+  color: var(--color-neutral-50);
+  line-height: 1.2;
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-bold);
 }
 
 /* ########################################
@@ -157,3 +162,138 @@ body {
 /* ########################################
 ########### COMPONENT STYLING #############
 ######################################## */
+.wrapper {
+  padding-block: var(--spacing);
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  background-color: var(--color-neutral-800);
+}
+
+.card {
+  margin-inline: auto;
+  width: min(85%, 27em);
+  display: grid;
+  background-color: var(--color-neutral-600);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  @media (min-width: 68em) {
+    width: min(100%, 62em);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card-content {
+  margin-inline: auto;
+  padding: var(--spacing);
+  width: min(100%, 28em);
+  display: grid;
+  align-items: center;
+  gap: var(--spacing);
+
+  & .card-hero,
+  & .card-stats {
+    display: grid;
+    gap: calc(0.75 * var(--spacing));
+  }
+
+  & .card-hero {
+    @media (max-width: 68em) {
+      text-align: center;
+    }
+  }
+
+  & .card-stats {
+    @media (min-width: 68em) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  & .card-stat {
+    display: grid;
+    gap: calc(0.1 * var(--spacing));
+
+    @media (max-width: 68em) {
+      justify-items: center;
+    }
+
+    & .highlight {
+      font-size: var(--font-size-body-lg);
+    }
+
+    & .topic {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: var(--font-size-body-sm);
+      @supports (font-variation-settings: normal) {
+        font-family: 'Lexend Deca VF', sans-serif;
+      }
+    }
+  }
+}
+
+.card-thumbnail {
+  position: relative;
+
+  @media (max-width: 68em) {
+    order: -1;
+  }
+
+  & img {
+    height: auto;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #aa5cdb;
+    filter: saturate(150%) brightness(60%) contrast(180%);
+    opacity: 0.5;
+  }
+}
+
+.highlight {
+  color: var(--color-neutral-50);
+  line-height: 1.2;
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+.highlight--accent {
+  color: var(--color-accent);
+}
+
+.footer {
+  padding: calc(0.5 * var(--spacing));
+  color: var(--color-neutral-100);
+  text-align: center;
+
+  & .footer-icon {
+    color: var(--color-accent);
+  }
+
+  & .footer-link {
+    transition: var(--transition-duration-timing);
+
+    &,
+    &:link {
+      color: var(--color-neutral-50);
+      text-underline-offset: 4px;
+    }
+    &:visited {
+      color: var(--color-neutral-200);
+    }
+    &:is(:hover, :focus-visible) {
+      color: var(--color-accent);
+    }
+    &:focus-visible {
+      outline-color: var(--color-accent);
+      text-decoration: none;
+    }
+    &:active {
+      color: var(--color-complementary);
+    }
+  }
+}
